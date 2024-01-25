@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:console_cmd/console_cmd.dart';
 import 'package:process_run/shell.dart';
 
 import '../../laravel.dart';
@@ -10,7 +9,7 @@ var shell = Shell();
 var context = '';
 
 class LaravelSetup {
-  void laravelStarts({String path, String projectName}) async {
+  void laravelStarts({required String path, String? projectName}) async {
     print('Laravel start downloading.....');
 
     await shell
@@ -21,14 +20,6 @@ class LaravelSetup {
       print('Laravel download done.............');
       print(
           '--------------------------------------------------------------------------------');
-      ANSIPrinter().printRGB('''
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1 //Enter your host 
-DB_PORT=3306 
-DB_DATABASE=laravel //Enter your database name
-DB_USERNAME=root  //Enter your username name
-DB_PASSWORD= //if your database password then enter here\nNow setup your database configration''',
-          breakLine: true, fColor: 0xFFff6700);
       print(
           '--------------------------------------------------------------------------------');
 
@@ -44,22 +35,10 @@ DB_PASSWORD= //if your database password then enter here\nNow setup your databas
       });
       print(
           "Go to here  $path + '/$projectName' .env\nSetup database configration");
-      ANSIPrinter().printRGB(
-          'Now Start your localhost server and mysql server ',
-          breakLine: true,
-          bGray: 1.0,
-          fColor: 0xFFff6700);
-      ANSIPrinter().printRGB('then call function laravelDone()',
-          breakLine: true, bGray: 1.0, fColor: 0xff4BB543);
-    }).catchError((onError) {
-      ANSIPrinter()
-          .printRGB(' Already download ', breakLine: true, fColor: 0xFF0000);
-    });
+    }).catchError((onError) {});
   }
 
-  void laravelDone({String path, String projectName}) async {
-    ANSIPrinter().printRGB('Laravel start installing dependency',
-        bGray: 1.0, fColor: 0xff4BB543);
+  void laravelDone({required String path, String? projectName}) async {
     await shell.cd(path + '/$projectName').run('composer update').then((a) {
       shell
           .cd(path + '/$projectName')
@@ -67,41 +46,25 @@ DB_PASSWORD= //if your database password then enter here\nNow setup your databas
         shell
             .cd(path + '/$projectName')
             .run('php artisan passport:install')
-            .then((a) {
-          ANSIPrinter().printRGB('Now Every thing is done :) Great ',
-              breakLine: true, bGray: 1.0, fColor: 0xff4BB543);
-        });
+            .then((a) {});
       });
     });
   }
 
-  void laravelMigrate({String path}) {
-    ANSIPrinter().printRGB('Running Migration... ',
-        breakLine: true, bGray: 1.0, fColor: 0xff4BB543);
-    shell.cd(path).run('''php artisan migrate ''').then((a) {
-      ANSIPrinter().printRGB('SuccessFully Migrate',
-          breakLine: true, bGray: 1.0, fColor: 0xff4BB543);
-    });
+  void laravelMigrate({required String path}) {
+    shell.cd(path).run('''php artisan migrate ''').then((a) {});
   }
 
-  void laravelReset({String path}) {
-    ANSIPrinter().printRGB('Running Migration... ',
-        breakLine: true, bGray: 1.0, fColor: 0xff4BB543);
+  void laravelReset({required String path}) {
     shell.cd(path).run('''
     php artisan migrate:rollback
     php artisan migrate:reset
     php artisan migrate:fresh
     php artisan migrate:fresh --seed
-    ''').then((a) {
-      ANSIPrinter().printRGB('SuccessFully Reset Migrate',
-          breakLine: true, bGray: 1.0, fColor: 0xff4BB543);
-    });
+    ''').then((a) {});
   }
 
   void laravelRunPassPort(path) {
-    shell.cd(path).run('php artisan passport:install').then((a) {
-      ANSIPrinter().printRGB('Now Every thing is done :) Great ',
-          breakLine: true, bGray: 1.0, fColor: 0xff4BB543);
-    });
+    shell.cd(path).run('php artisan passport:install').then((a) {});
   }
 }
