@@ -1,5 +1,5 @@
-import 'package:animated_interpolation/animated_config.dart';
-import 'package:animated_interpolation/fading.dart';
+import 'package:firexcode/animated_interpolation/fading.dart';
+import 'package:firexcode/animated_interpolation/animated_config.dart';
 
 enum XAnimationType {
   fadeIn,
