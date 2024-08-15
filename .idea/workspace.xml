@@ -38,6 +38,11 @@
     </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="fix-compatibility" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -64,9 +69,9 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "fix-compatibility",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "dart.settings",
+    "settings.editor.selected.configurable": "flutter.settings",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -103,7 +108,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723676259443</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix">
+      <option name="closed" value="true" />
+      <created>1723676557526</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723676557526</updated>
+    </task>
+    <task id="LOCAL-00005" summary="bump _fe_analyzer_shared">
+      <option name="closed" value="true" />
+      <created>1723686342510</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723686342510</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -115,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="bump dart" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="bump _fe_analyzer_shared" />
+    <option name="LAST_COMMIT_MESSAGE" value="bump _fe_analyzer_shared" />
   </component>
 </project>
