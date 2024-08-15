@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 // ====================================
 // ============= FadeIn
 class FadeIn extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -33,8 +33,8 @@ class FadeIn extends StatefulWidget {
 }
 
 class _FadeInState extends State<FadeIn> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  late AnimationController controller;
+  late Animation<double> animation;
 
   @override
   void dispose() {
@@ -50,7 +50,7 @@ class _FadeInState extends State<FadeIn> with SingleTickerProviderStateMixin {
     animation = CurvedAnimation(curve: Curves.easeOut, parent: controller);
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -62,7 +62,7 @@ class _FadeInState extends State<FadeIn> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: animation,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Opacity(
             opacity: animation.value,
             child: widget.child,
@@ -73,10 +73,10 @@ class _FadeInState extends State<FadeIn> with SingleTickerProviderStateMixin {
 
 // ============= FadeInDown
 class FadeInDown extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -104,9 +104,9 @@ class FadeInDown extends StatefulWidget {
 
 class _FadeInDownState extends State<FadeInDown>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Animation<double> opacity;
 
   @override
   void dispose() {
@@ -127,7 +127,7 @@ class _FadeInDownState extends State<FadeInDown>
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -139,7 +139,7 @@ class _FadeInDownState extends State<FadeInDown>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(0, animation.value),
               child: Opacity(
@@ -152,10 +152,10 @@ class _FadeInDownState extends State<FadeInDown>
 
 // ============= FadeInDownBig
 class FadeInDownBig extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -190,10 +190,10 @@ class FadeInDownBig extends StatelessWidget {
 
 // ============= FadeInUp
 class FadeInUp extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -221,9 +221,9 @@ class FadeInUp extends StatefulWidget {
 
 class _FadeInUpState extends State<FadeInUp>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -242,7 +242,7 @@ class _FadeInUpState extends State<FadeInUp>
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -254,7 +254,7 @@ class _FadeInUpState extends State<FadeInUp>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(0, animation.value),
               child: Opacity(
@@ -267,10 +267,10 @@ class _FadeInUpState extends State<FadeInUp>
 
 // ============= FadeInUpBig
 class FadeInUpBig extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -306,10 +306,10 @@ class FadeInUpBig extends StatelessWidget {
 
 // ============= FadeInLeft
 class FadeInLeft extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -337,9 +337,9 @@ class FadeInLeft extends StatefulWidget {
 
 class _FadeInLeftState extends State<FadeInLeft>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -358,7 +358,7 @@ class _FadeInLeftState extends State<FadeInLeft>
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -370,7 +370,7 @@ class _FadeInLeftState extends State<FadeInLeft>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(animation.value, 0),
               child: Opacity(
@@ -383,10 +383,10 @@ class _FadeInLeftState extends State<FadeInLeft>
 
 // ============= FadeInLeftBig
 class FadeInLeftBig extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -422,10 +422,10 @@ class FadeInLeftBig extends StatelessWidget {
 
 // ============= FadeInRight
 class FadeInRight extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -453,9 +453,9 @@ class FadeInRight extends StatefulWidget {
 
 class _FadeInRightState extends State<FadeInRight>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -474,7 +474,7 @@ class _FadeInRightState extends State<FadeInRight>
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -486,7 +486,7 @@ class _FadeInRightState extends State<FadeInRight>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(animation.value, 0),
               child: Opacity(
@@ -499,10 +499,10 @@ class _FadeInRightState extends State<FadeInRight>
 
 // ============= FadeInRightBig
 class FadeInRightBig extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -544,10 +544,10 @@ class FadeInRightBig extends StatelessWidget {
 // ====================================
 // ============= BounceInDown
 class BounceInDown extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -575,9 +575,9 @@ class BounceInDown extends StatefulWidget {
 
 class _BounceInDownState extends State<BounceInDown>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -597,7 +597,7 @@ class _BounceInDownState extends State<BounceInDown>
         .animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -609,7 +609,7 @@ class _BounceInDownState extends State<BounceInDown>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(0, animation.value),
               child: Opacity(opacity: opacity.value, child: widget.child));
@@ -619,10 +619,10 @@ class _BounceInDownState extends State<BounceInDown>
 
 // ============= BounceInUp
 class BounceInUp extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -658,10 +658,10 @@ class BounceInUp extends StatelessWidget {
 
 // ============= BounceInLeft
 class BounceInLeft extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -689,9 +689,9 @@ class BounceInLeft extends StatefulWidget {
 
 class _BounceInLeftState extends State<BounceInLeft>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -710,7 +710,7 @@ class _BounceInLeftState extends State<BounceInLeft>
         .animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -722,7 +722,7 @@ class _BounceInLeftState extends State<BounceInLeft>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(animation.value, 0),
               child: Opacity(
@@ -735,10 +735,10 @@ class _BounceInLeftState extends State<BounceInLeft>
 
 // ============= BounceInRight
 class BounceInRight extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -780,10 +780,10 @@ class BounceInRight extends StatelessWidget {
 // ====================================
 // ============= ElasticIn
 class ElasticIn extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -809,9 +809,9 @@ class ElasticIn extends StatefulWidget {
 
 class _ElasticInState extends State<ElasticIn>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> bouncing;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> bouncing;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -831,7 +831,7 @@ class _ElasticInState extends State<ElasticIn>
         .animate(CurvedAnimation(parent: controller, curve: Curves.elasticOut));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -843,7 +843,7 @@ class _ElasticInState extends State<ElasticIn>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.scale(
             scale: bouncing.value,
             child: Opacity(
@@ -857,10 +857,10 @@ class _ElasticInState extends State<ElasticIn>
 
 // ============= ElasticInDown
 class ElasticInDown extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -890,10 +890,10 @@ class ElasticInDown extends StatefulWidget {
 
 class _ElasticInDownState extends State<ElasticInDown>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> bouncing;
-  Animation<double> falling;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> bouncing;
+  late Animation<double> falling;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -920,7 +920,7 @@ class _ElasticInDownState extends State<ElasticInDown>
             curve: Interval(0.30, 1, curve: Curves.elasticOut)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -932,7 +932,7 @@ class _ElasticInDownState extends State<ElasticInDown>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(
                   0,
@@ -949,10 +949,10 @@ class _ElasticInDownState extends State<ElasticInDown>
 
 // ============= ElasticInUp
 class ElasticInUp extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -989,10 +989,10 @@ class ElasticInUp extends StatelessWidget {
 
 // ============= ElasticInLeft
 class ElasticInLeft extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -1022,10 +1022,10 @@ class ElasticInLeft extends StatefulWidget {
 
 class _ElasticInLeftState extends State<ElasticInLeft>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> bouncing;
-  Animation<double> falling;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> bouncing;
+  late Animation<double> falling;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -1052,7 +1052,7 @@ class _ElasticInLeftState extends State<ElasticInLeft>
             curve: Interval(0.30, 1, curve: Curves.elasticOut)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1064,7 +1064,7 @@ class _ElasticInLeftState extends State<ElasticInLeft>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(
                   (falling.value == (widget.to * -1))
@@ -1081,10 +1081,10 @@ class _ElasticInLeftState extends State<ElasticInLeft>
 
 // ============= ElasticInRight
 class ElasticInRight extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -1127,10 +1127,10 @@ class ElasticInRight extends StatelessWidget {
 
 // ============= FlipInX
 class FlipInX extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -1155,9 +1155,9 @@ class FlipInX extends StatefulWidget {
 }
 
 class _FlipInXState extends State<FlipInX> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> rotation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> rotation;
+  late Animation<double> opacity;
 
   @override
   void dispose() {
@@ -1178,7 +1178,7 @@ class _FlipInXState extends State<FlipInX> with SingleTickerProviderStateMixin {
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1190,7 +1190,7 @@ class _FlipInXState extends State<FlipInX> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform(
               alignment: FractionalOffset.center,
               transform: Matrix4.identity()..rotateX(rotation.value),
@@ -1204,10 +1204,10 @@ class _FlipInXState extends State<FlipInX> with SingleTickerProviderStateMixin {
 
 // ============= FlipInY
 class FlipInY extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -1232,9 +1232,9 @@ class FlipInY extends StatefulWidget {
 }
 
 class _FlipInYState extends State<FlipInY> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> rotation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> rotation;
+  late Animation<double> opacity;
 
   @override
   void dispose() {
@@ -1255,7 +1255,7 @@ class _FlipInYState extends State<FlipInY> with SingleTickerProviderStateMixin {
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1267,7 +1267,7 @@ class _FlipInYState extends State<FlipInY> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform(
               alignment: FractionalOffset.center,
               transform: Matrix4.identity()..rotateY(rotation.value),
@@ -1288,10 +1288,10 @@ class _FlipInYState extends State<FlipInY> with SingleTickerProviderStateMixin {
 // ====================================
 // ============= SlideInUp
 class SlideInUp extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -1319,8 +1319,8 @@ class SlideInUp extends StatefulWidget {
 
 class _SlideInUpState extends State<SlideInUp>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  late AnimationController controller;
+  late Animation<double> animation;
 
   @override
   void dispose() {
@@ -1338,7 +1338,7 @@ class _SlideInUpState extends State<SlideInUp>
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1350,7 +1350,7 @@ class _SlideInUpState extends State<SlideInUp>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(0, animation.value), child: widget.child);
         });
@@ -1359,10 +1359,10 @@ class _SlideInUpState extends State<SlideInUp>
 
 // ============= SlideInDown
 class SlideInDown extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -1398,10 +1398,10 @@ class SlideInDown extends StatelessWidget {
 
 // ============= SlideInLeft
 class SlideInLeft extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -1429,8 +1429,8 @@ class SlideInLeft extends StatefulWidget {
 
 class _SlideInLeftState extends State<SlideInLeft>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  late AnimationController controller;
+  late Animation<double> animation;
 
   @override
   void dispose() {
@@ -1448,7 +1448,7 @@ class _SlideInLeftState extends State<SlideInLeft>
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1460,7 +1460,7 @@ class _SlideInLeftState extends State<SlideInLeft>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(animation.value, 0), child: widget.child);
         });
@@ -1469,10 +1469,10 @@ class _SlideInLeftState extends State<SlideInLeft>
 
 // ============= SlideInRight
 class SlideInRight extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -1515,10 +1515,10 @@ class SlideInRight extends StatelessWidget {
 
 // ============= JelloIn
 class JelloIn extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -1543,9 +1543,9 @@ class JelloIn extends StatefulWidget {
 }
 
 class _JelloInState extends State<JelloIn> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> rotation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> rotation;
+  late Animation<double> opacity;
 
   @override
   void dispose() {
@@ -1566,7 +1566,7 @@ class _JelloInState extends State<JelloIn> with SingleTickerProviderStateMixin {
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1578,7 +1578,7 @@ class _JelloInState extends State<JelloIn> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform(
               alignment: FractionalOffset.center,
               transform: Matrix4.identity()
@@ -1600,11 +1600,11 @@ class _JelloInState extends State<JelloIn> with SingleTickerProviderStateMixin {
 // ====================================
 // ============= Bounce
 class Bounce extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
   final bool infinite;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -1632,10 +1632,10 @@ class Bounce extends StatefulWidget {
 }
 
 class _BounceState extends State<Bounce> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animationBounce;
+  late AnimationController controller;
+  late Animation<double> animationBounce;
 
-  Animation<double> animationUp;
+  late Animation<double> animationUp;
   @override
   void dispose() {
     controller.dispose();
@@ -1659,7 +1659,7 @@ class _BounceState extends State<Bounce> with SingleTickerProviderStateMixin {
             parent: controller));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1677,7 +1677,7 @@ class _BounceState extends State<Bounce> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(
                   0,
@@ -1691,11 +1691,11 @@ class _BounceState extends State<Bounce> with SingleTickerProviderStateMixin {
 
 // ============= Flash
 class Flash extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
   final bool infinite;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -1721,11 +1721,11 @@ class Flash extends StatefulWidget {
 }
 
 class _FlashState extends State<Flash> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> opacityOut1;
-  Animation<double> opacityIn1;
-  Animation<double> opacityOut2;
-  Animation<double> opacityIn2;
+  late AnimationController controller;
+  late Animation<double> opacityOut1;
+  late Animation<double> opacityIn1;
+  late Animation<double> opacityOut2;
+  late Animation<double> opacityIn2;
   @override
   void dispose() {
     controller.dispose();
@@ -1748,7 +1748,7 @@ class _FlashState extends State<Flash> with SingleTickerProviderStateMixin {
         .animate(CurvedAnimation(parent: controller, curve: Interval(0.75, 1)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1764,7 +1764,7 @@ class _FlashState extends State<Flash> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Opacity(
               opacity: (controller.value < 0.25)
                   ? opacityOut1.value
@@ -1780,11 +1780,11 @@ class _FlashState extends State<Flash> with SingleTickerProviderStateMixin {
 
 // ============= Pulse
 class Pulse extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
   final bool infinite;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -1810,9 +1810,9 @@ class Pulse extends StatefulWidget {
 }
 
 class _PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animationInc;
-  Animation<double> animationDec;
+  late AnimationController controller;
+  late Animation<double> animationInc;
+  late Animation<double> animationDec;
   @override
   void dispose() {
     controller.dispose();
@@ -1832,7 +1832,7 @@ class _PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
         parent: controller, curve: Interval(0.5, 1, curve: Curves.easeIn)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1848,7 +1848,7 @@ class _PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.scale(
             scale: (controller.value < 0.5)
                 ? animationInc.value
@@ -1861,11 +1861,11 @@ class _PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
 
 // ============= Swing
 class Swing extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
   final bool infinite;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -1891,13 +1891,13 @@ class Swing extends StatefulWidget {
 }
 
 class _SwingState extends State<Swing> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animationRotation1;
-  Animation<double> animationRotation2;
-  Animation<double> animationRotation3;
-  Animation<double> animationRotation4;
-  Animation<double> animationRotation5;
-  Animation<double> animationRotation6;
+  late AnimationController controller;
+  late Animation<double> animationRotation1;
+  late Animation<double> animationRotation2;
+  late Animation<double> animationRotation3;
+  late Animation<double> animationRotation4;
+  late Animation<double> animationRotation5;
+  late Animation<double> animationRotation6;
   @override
   void dispose() {
     controller.dispose();
@@ -1941,7 +1941,7 @@ class _SwingState extends State<Swing> with SingleTickerProviderStateMixin {
             curve: Interval(0.8333, 1, curve: Curves.easeOut)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -1957,7 +1957,7 @@ class _SwingState extends State<Swing> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           var angle = (animationRotation1.value != -0.5)
               ? animationRotation1.value
               : (animationRotation2.value != 0.5)
@@ -1980,11 +1980,11 @@ class _SwingState extends State<Swing> with SingleTickerProviderStateMixin {
 
 // ============= Spin
 class Spin extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
   final bool infinite;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double spins;
@@ -2012,8 +2012,8 @@ class Spin extends StatefulWidget {
 }
 
 class _SpinState extends State<Spin> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> spin;
+  late AnimationController controller;
+  late Animation<double> spin;
 
   @override
   void dispose() {
@@ -2031,7 +2031,7 @@ class _SpinState extends State<Spin> with SingleTickerProviderStateMixin {
         .animate(CurvedAnimation(parent: controller, curve: Curves.easeInOut));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2047,7 +2047,7 @@ class _SpinState extends State<Spin> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.rotate(
             angle: spin.value * 3.1415926535,
             child: widget.child,
@@ -2058,11 +2058,11 @@ class _SpinState extends State<Spin> with SingleTickerProviderStateMixin {
 
 // ============= SpinPerfect
 class SpinPerfect extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
   final bool infinite;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double spins;
@@ -2091,8 +2091,8 @@ class SpinPerfect extends StatefulWidget {
 
 class _SpinPerfectState extends State<SpinPerfect>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> spin;
+  late AnimationController controller;
+  late Animation<double> spin;
 
   @override
   void dispose() {
@@ -2110,7 +2110,7 @@ class _SpinPerfectState extends State<SpinPerfect>
         .animate(CurvedAnimation(parent: controller, curve: Curves.linear));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2126,7 +2126,7 @@ class _SpinPerfectState extends State<SpinPerfect>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.rotate(
             angle: spin.value * 3.141516,
             child: widget.child,
@@ -2137,11 +2137,11 @@ class _SpinPerfectState extends State<SpinPerfect>
 
 // ============= Dance
 class Dance extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
   final bool infinite;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -2167,10 +2167,10 @@ class Dance extends StatefulWidget {
 }
 
 class _DanceState extends State<Dance> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> step1;
-  Animation<double> step2;
-  Animation<double> step3;
+  late AnimationController controller;
+  late Animation<double> step1;
+  late Animation<double> step2;
+  late Animation<double> step3;
 
   @override
   void dispose() {
@@ -2197,7 +2197,7 @@ class _DanceState extends State<Dance> with SingleTickerProviderStateMixin {
         curve: Interval(0.6666, 1, curve: Curves.bounceOut)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2213,7 +2213,7 @@ class _DanceState extends State<Dance> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           final animation = (step1.value != -0.2)
               ? step1.value
               : (step2.value != 0.2)
@@ -2230,11 +2230,11 @@ class _DanceState extends State<Dance> with SingleTickerProviderStateMixin {
 
 // ============= Roulette
 class Roulette extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
   final bool infinite;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double spins;
@@ -2263,8 +2263,8 @@ class Roulette extends StatefulWidget {
 
 class _RouletteState extends State<Roulette>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> spin;
+  late AnimationController controller;
+  late Animation<double> spin;
 
   @override
   void dispose() {
@@ -2282,7 +2282,7 @@ class _RouletteState extends State<Roulette>
         .animate(CurvedAnimation(parent: controller, curve: Curves.elasticOut));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2298,7 +2298,7 @@ class _RouletteState extends State<Roulette>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.rotate(
             angle: spin.value * 3.141516,
             child: widget.child,
@@ -2316,10 +2316,10 @@ class _RouletteState extends State<Roulette>
 // ====================================
 // ============= FadeOut
 class FadeOut extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
 
@@ -2344,8 +2344,8 @@ class FadeOut extends StatefulWidget {
 }
 
 class _FadeOutState extends State<FadeOut> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  late AnimationController controller;
+  late Animation<double> animation;
 
   @override
   void dispose() {
@@ -2362,7 +2362,7 @@ class _FadeOutState extends State<FadeOut> with SingleTickerProviderStateMixin {
         .animate(CurvedAnimation(curve: Curves.easeOut, parent: controller));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2374,7 +2374,7 @@ class _FadeOutState extends State<FadeOut> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: animation,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Opacity(
             opacity: animation.value,
             child: widget.child,
@@ -2385,10 +2385,10 @@ class _FadeOutState extends State<FadeOut> with SingleTickerProviderStateMixin {
 
 // ============= FadeOutDown
 class FadeOutDown extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2416,9 +2416,9 @@ class FadeOutDown extends StatefulWidget {
 
 class _FadeOutDownState extends State<FadeOutDown>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Animation<double> opacity;
 
   @override
   void dispose() {
@@ -2439,7 +2439,7 @@ class _FadeOutDownState extends State<FadeOutDown>
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2451,7 +2451,7 @@ class _FadeOutDownState extends State<FadeOutDown>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(0, animation.value),
               child: Opacity(
@@ -2464,10 +2464,10 @@ class _FadeOutDownState extends State<FadeOutDown>
 
 // ============= FadeOutDownBig
 class FadeOutDownBig extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2503,10 +2503,10 @@ class FadeOutDownBig extends StatelessWidget {
 
 // ============= FadeOutUp
 class FadeOutUp extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2534,9 +2534,9 @@ class FadeOutUp extends StatefulWidget {
 
 class _FadeOutUpState extends State<FadeOutUp>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -2555,7 +2555,7 @@ class _FadeOutUpState extends State<FadeOutUp>
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2567,7 +2567,7 @@ class _FadeOutUpState extends State<FadeOutUp>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(0, animation.value),
               child: Opacity(
@@ -2580,10 +2580,10 @@ class _FadeOutUpState extends State<FadeOutUp>
 
 // ============= FadeOutUpBig
 class FadeOutUpBig extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2619,10 +2619,10 @@ class FadeOutUpBig extends StatelessWidget {
 
 // ============= FadeOutLeft
 class FadeOutLeft extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2650,9 +2650,9 @@ class FadeOutLeft extends StatefulWidget {
 
 class _FadeOutLeftState extends State<FadeOutLeft>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Animation<double> opacity;
   @override
   void dispose() {
     controller.dispose();
@@ -2671,7 +2671,7 @@ class _FadeOutLeftState extends State<FadeOutLeft>
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2683,7 +2683,7 @@ class _FadeOutLeftState extends State<FadeOutLeft>
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.translate(
               offset: Offset(animation.value, 0),
               child: Opacity(
@@ -2696,10 +2696,10 @@ class _FadeOutLeftState extends State<FadeOutLeft>
 
 // ============= FadeOutLeftBig
 class FadeOutLeftBig extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2735,10 +2735,10 @@ class FadeOutLeftBig extends StatelessWidget {
 
 // ============= FadeOutRight
 class FadeOutRight extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2774,10 +2774,10 @@ class FadeOutRight extends StatelessWidget {
 
 // ============= FadeOutRightBig
 class FadeOutRightBig extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2820,10 +2820,10 @@ class FadeOutRightBig extends StatelessWidget {
 // ====================================
 // ============= ZoomIn
 class ZoomIn extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2850,9 +2850,9 @@ class ZoomIn extends StatefulWidget {
 }
 
 class _ZoomInState extends State<ZoomIn> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> fade;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> fade;
+  late Animation<double> opacity;
 
   @override
   void dispose() {
@@ -2872,7 +2872,7 @@ class _ZoomInState extends State<ZoomIn> with SingleTickerProviderStateMixin {
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2884,7 +2884,7 @@ class _ZoomInState extends State<ZoomIn> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: fade,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.scale(
             scale: fade.value,
             child: Opacity(
@@ -2898,10 +2898,10 @@ class _ZoomInState extends State<ZoomIn> with SingleTickerProviderStateMixin {
 
 // ============= ZoomOut
 class ZoomOut extends StatefulWidget {
-  final Widget child;
+  final Widget? child;
   final Duration duration;
   final Duration delay;
-  final Function(AnimationController) controller;
+  final Function(AnimationController)? controller;
   final bool manualTrigger;
   final bool animate;
   final double from;
@@ -2928,9 +2928,9 @@ class ZoomOut extends StatefulWidget {
 }
 
 class _ZoomOutState extends State<ZoomOut> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> zoom;
-  Animation<double> opacity;
+  late AnimationController controller;
+  late Animation<double> zoom;
+  late Animation<double> opacity;
 
   @override
   void dispose() {
@@ -2951,7 +2951,7 @@ class _ZoomOutState extends State<ZoomOut> with SingleTickerProviderStateMixin {
         .animate(CurvedAnimation(parent: controller, curve: Interval(0, 0.65)));
 
     if (widget.controller is Function) {
-      widget.controller(controller);
+      widget.controller!(controller);
     }
   }
 
@@ -2963,7 +2963,7 @@ class _ZoomOutState extends State<ZoomOut> with SingleTickerProviderStateMixin {
 
     return AnimatedBuilder(
         animation: controller,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform.scale(
             scale: zoom.value,
             child: Opacity(

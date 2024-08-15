@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 class AppbarGadient extends StatefulWidget implements PreferredSizeWidget {
   AppbarGadient(
-      {Key key,
+      {Key? key,
       this.backgroundColor,
       this.leading,
       this.automaticallyImplyLeading = true,
@@ -32,40 +32,33 @@ class AppbarGadient extends StatefulWidget implements PreferredSizeWidget {
       this.titleTextStyle,
       this.toolbarHeight,
       this.toolbarTextStyle})
-      : assert(automaticallyImplyLeading != null),
-        assert(elevation == null || elevation >= 0.0),
-        assert(primary != null),
-        assert(titleSpacing != null),
-        assert(toolbarOpacity != null),
-        assert(bottomOpacity != null),
-        assert(excludeHeaderSemantics != null),
-        assert(backwardsCompatibility != null),
+      : assert(elevation == null || elevation >= 0.0),
         preferredSize = Size.fromHeight(
-            kToolbarHeight + (bottom?.preferredSize?.height ?? 0.0)),
+            kToolbarHeight + (bottom?.preferredSize.height ?? 0.0)),
         super(key: key);
 
   @override
   _AppbarGadientState createState() => _AppbarGadientState();
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
-  final Widget leading;
+  final Widget? leading;
   final bool automaticallyImplyLeading;
-  final Widget title;
-  final List<Widget> actions;
-  final Gradient gradient;
-  final PreferredSizeWidget bottom;
-  final double elevation;
-  final ShapeBorder shape;
-  final Brightness brightness;
-  final IconThemeData iconTheme;
-  final IconThemeData actionsIconTheme;
-  final TextTheme textTheme;
+  final Widget? title;
+  final List<Widget>? actions;
+  final Gradient? gradient;
+  final PreferredSizeWidget? bottom;
+  final double? elevation;
+  final ShapeBorder? shape;
+  final Brightness? brightness;
+  final IconThemeData? iconTheme;
+  final IconThemeData? actionsIconTheme;
+  final TextTheme? textTheme;
   final bool primary;
-  final bool centerTitle;
+  final bool? centerTitle;
   final double titleSpacing;
   final double toolbarOpacity;
   final double bottomOpacity;
-  final DecorationImage image;
+  final DecorationImage? image;
 
   /// {@template flutter.material.appbar.excludeHeaderSemantics}
   /// Whether the title should be wrapped with header [Semantics].
@@ -98,14 +91,14 @@ class AppbarGadient extends StatefulWidget implements PreferredSizeWidget {
   ///    default colors are based on.
   ///  * [ColorScheme.brightness], which indicates if the overall [Theme]
   ///    is light or dark.
-  final Color foregroundColor;
+  final Color? foregroundColor;
 
   /// {@template flutter.material.appbar.leadingWidth}
   /// Defines the width of [leading] widget.
   ///
   /// By default, the value of `leadingWidth` is 56.0.
   /// {@endtemplate}
-  final double leadingWidth;
+  final double? leadingWidth;
 
   /// {@template flutter.material.appbar.shadowColor}
   /// The of the shadow below the app bar.
@@ -119,7 +112,7 @@ class AppbarGadient extends StatefulWidget implements PreferredSizeWidget {
   ///
   ///  * [elevation], which defines the size of the shadow below the app bar.
   ///  * [shape], which defines the shape of the app bar and its shadow.
-  final Color shadowColor;
+  final Color? shadowColor;
 
   /// {@template flutter.material.appbar.systemOverlayStyle}
   /// Specifies the style to use for the system overlays that overlap the AppBar.
@@ -137,7 +130,7 @@ class AppbarGadient extends StatefulWidget implements PreferredSizeWidget {
   //
   /// See also:
   ///  * [SystemChrome.setSystemUIOverlayStyle]
-  final SystemUiOverlayStyle systemOverlayStyle;
+  final SystemUiOverlayStyle? systemOverlayStyle;
 
   /// {@template flutter.material.appbar.titleTextStyle}
   /// The default text style for the AppBar's [title] widget.
@@ -155,14 +148,14 @@ class AppbarGadient extends StatefulWidget implements PreferredSizeWidget {
   ///    AppBar's "toolbar".
   ///  * [DefaultTextStyle], which overrides the default text style for all of the
   ///    the widgets in a subtree.
-  final TextStyle titleTextStyle;
+  final TextStyle? titleTextStyle;
 
   /// {@template flutter.material.appbar.toolbarHeight}
   /// Defines the height of the toolbar component of an [AppBar].
   ///
   /// By default, the value of `toolbarHeight` is [kToolbarHeight].
   /// {@endtemplate}
-  final double toolbarHeight;
+  final double? toolbarHeight;
 
   /// {@template flutter.material.appbar.toolbarTextStyle}
   /// The default text style for the AppBar's [leading], and
@@ -179,10 +172,10 @@ class AppbarGadient extends StatefulWidget implements PreferredSizeWidget {
   ///  * [titleTextStyle], which overrides the default text style for the [title].
   ///  * [DefaultTextStyle], which overrides the default text style for all of the
   ///    the widgets in a subtree.
-  final TextStyle toolbarTextStyle;
+  final TextStyle? toolbarTextStyle;
   @override
   final Size preferredSize;
-  bool getEffectiveCenterTitle(ThemeData theme) {
+  bool? getEffectiveCenterTitle(ThemeData theme) {
     if (centerTitle != null) return centerTitle;
     assert(theme.platform != null);
     switch (theme.platform) {
@@ -194,7 +187,7 @@ class AppbarGadient extends StatefulWidget implements PreferredSizeWidget {
         return false;
       case TargetPlatform.macOS:
       case TargetPlatform.iOS:
-        return actions == null || actions.length < 2;
+        return actions == null || actions!.length < 2;
     }
     return null;
   }

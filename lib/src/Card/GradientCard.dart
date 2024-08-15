@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:firexcode/firexcode.dart';
 
 class XGradientCardBanner extends StatelessWidget {
-  final Function onTap;
+  final Function? onTap;
   final Gradient gradient;
-  final Color shadowColor;
+  final Color? shadowColor;
   final Widget title;
   final Widget subTitle;
-  final double rounded;
-  final double blurRadius;
-  final double spreadRadius;
-  final double width;
-  final Widget rightSideChild;
-  final Widget button;
-  final EdgeInsetsGeometry margin;
+  final double? rounded;
+  final double? blurRadius;
+  final double? spreadRadius;
+  final double? width;
+  final Widget? rightSideChild;
+  final Widget? button;
+  final EdgeInsetsGeometry? margin;
 
   const XGradientCardBanner(
-      {Key key,
+      {Key? key,
       this.onTap,
-      @required this.gradient,
+      required this.gradient,
       this.shadowColor,
-      @required this.title,
-      @required this.subTitle,
+      required this.title,
+      required this.subTitle,
       this.rounded,
       this.blurRadius,
       this.spreadRadius,
@@ -51,9 +51,9 @@ class XGradientCardBanner extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                title ?? Container(),
+                title,
                 5.0.sizedHeight(),
-                subTitle ?? Container(),
+                subTitle,
                 10.0.sizedHeight(),
                 button ?? Container()
               ],
